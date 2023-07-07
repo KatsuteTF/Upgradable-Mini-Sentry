@@ -3,7 +3,6 @@
 #pragma semicolon 1
 
 #include <sourcemod>
-#include <sdkhooks>
 #include <tf2_stocks>
 
 float size;
