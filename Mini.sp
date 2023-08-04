@@ -33,7 +33,10 @@ public void OnConvarChanged(const ConVar convar, const char[] oldValue, const ch
 
 public void OnBuilt(const Event event, const char[] name, const bool dontBroadcast){
     int client = GetClientOfUserId(GetEventInt(event, "userid"));
-    if(TF2_GetPlayerClass(client) == TFClass_Engineer && GetEntProp(GetPlayerWeaponSlot(client, 2), Prop_Send, "m_iItemDefinitionIndex") == 142){
+    int slot = GetPlayerWeaponSlot(client, 2);
+    if(TF2_GetPlayerClass(client) == TFClass_Engineer &&
+       IsValidEntity(slot) &&
+       GetEntProp(slot, Prop_Send, "m_iItemDefinitionIndex") == 142){
         int ent = GetEventInt(event, "index");
         char entname[20];
         GetEntityClassname(ent, entname, 20);
